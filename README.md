@@ -4,6 +4,9 @@ Experiment with workflow actions.
 ## Pull Requests
 There are examples prefixed pr- for pull requests. 
 
+See some example GitHub event JSON structures in the files on the root named:
+` github-pr-event-{event}.json `
+
 Nice reference to the actions:  
 https://frontside.com/blog/2020-05-26-github-actions-pull_request/
 
