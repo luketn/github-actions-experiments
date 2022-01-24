@@ -15,4 +15,4 @@ jobs:
       - env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
         run: echo $EVENT_CONTEXT
-      - run: echo "Deploying (pull request ${{github.action}})!"
+      - run: echo "Deploying (pull request ${{github.event.action}})!"
