@@ -1,8 +1,9 @@
-name: Deploy an environment when a pull request is opened or updated, only if the label 'deploy' is present
+name: Deploy PR Environment
+# Deploys a temporary environment for testing a version of the code when a pull request is opened or updated, if the label 'deploy' is set.
+
 on:
   pull_request:
     types: [ opened, reopened, edited, synchronize, labeled, unlabeled ]
-
     
 jobs:
   deploy-pr:
