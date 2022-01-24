@@ -1,13 +1,15 @@
-name: Deploy an environment when a pull request is opened or 
+name: Deploy an environment when a pull request is opened or updated, only if the label 'deploy' is present
 on:
   pull_request:
-    types: [ opened, reopened, edited, synchronize ]
+    types: [ opened, reopened, edited, synchronize, labeled, unlabeled ]
+
     
 jobs:
-  package-deploy:
+  deploy-pr:
+    if: contains(github.event.pull_request.labels.*.name, 'deploy')
     runs-on: ubuntu-latest
     steps:
       - env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
-        run: |
-          echo $EVENT_CONTEXT
+        run: echo $EVENT_CONTEXT
+      - run: echo "Deploying!!"
