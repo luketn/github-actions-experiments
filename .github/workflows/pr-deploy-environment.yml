@@ -16,6 +16,6 @@ jobs:
         run: echo $EVENT_CONTEXT
       - env:
           GITHUB_BRANCH: ${{ github.event.pull_request.head.ref }}
-          GITHUB_ACTION: ${{github.event.action}}
+          GITHUB_ACTION: ${{ github.event.action }}
         run: echo "Deploying branch '${GITHUB_BRANCH}' (pull request ${GITHUB_ACTION})!"
 
