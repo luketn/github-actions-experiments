@@ -1,5 +1,5 @@
-name: Deploy PR Environment
-# Deploys a temporary environment for testing a version of the code when a pull request is opened or updated, if the label 'deploy' is set.
+name: Destroy PR Environment
+# Destroys a temporary environment for testing a version of the code when a pull request is closed or unlabeled, if the label 'deploy' was set.
 
 on:
   pull_request:
