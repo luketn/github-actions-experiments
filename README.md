@@ -16,8 +16,7 @@ https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 ### pr-deploy/destroy-environment
 These two workflows are a pair, in a concurrency group together named 'deploy' (meaning only one job at a time can run from this pair of workflows).
 
-#### Deploy
-[pr-deploy-environment.yml](./.github/workflows/pr-deploy-environment.yml)  
+#### Deploy ([pr-deploy-environment.yml](./.github/workflows/pr-deploy-environment.yml))  
 The concept is to deploy a temporary environment when either of two events occurs:
 1. A label 'deploy' is applied to a pull request.
 2. A new commit is pushed to the base branch of a pull request having a label 'deploy'
@@ -29,8 +28,7 @@ In order to be triggered under only these conditions there are two things requir
 2. A condition on the label name 'deploy':
 ` if: contains(github.event.pull_request.labels.*.name, 'deploy') `
 
-#### Destroy
-[pr-destroy-environment.yml](./.github/workflows/pr-destroy-environment.yml)  
+#### Destroy ([pr-destroy-environment.yml](./.github/workflows/pr-destroy-environment.yml))  
 In order to destroy the environment, there is a matching workflow which is triggered by:
 ` [ closed, unlabeled ] `
 
