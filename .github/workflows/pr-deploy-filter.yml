@@ -1,13 +1,18 @@
-name: Deploy an environment when a pull request is opened or 
+name: Deploy PR Environment
+# Deploys a temporary environment for testing a version of the code when a pull request is opened or updated, if the label 'deploy' is set.
+
+concurrency: deploy
+
 on:
   pull_request:
-    types: [ opened, reopened, edited, synchronize ]
+    types: [ opened, reopened, edited, synchronize, labeled ]
     
 jobs:
-  package-deploy:
+  deploy-pr-environment:
+    if: contains(github.event.pull_request.labels.*.name, 'deploy')
     runs-on: ubuntu-latest
     steps:
       - env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
-        run: |
-          echo $EVENT_CONTEXT
+        run: echo $EVENT_CONTEXT
+      - run: echo "Deploying (pull request ${{github.action}})!"
