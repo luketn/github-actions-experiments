@@ -1,6 +1,5 @@
-name: Destroy PR Environment
 # Destroys a temporary environment for testing a version of the code when a pull request is closed or unlabeled, if the label 'deploy' was set.
-
+name: Destroy PR Environment
 concurrency: deploy
 
 on:
