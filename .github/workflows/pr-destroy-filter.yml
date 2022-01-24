@@ -9,10 +9,7 @@ on:
     
 jobs:
   destroy-pr-environment:
-    if: |
-      (github.action == 'unlabeled' && github.event.label.name == 'deploy')
-      || 
-      (github.action == 'closed' && contains(github.event.pull_request.labels.*.name, 'deploy'))
+    if: (github.action == 'unlabeled' && github.event.label.name == 'deploy') || (github.action == 'closed' && contains(github.event.pull_request.labels.*.name, 'deploy'))
     runs-on: ubuntu-latest
     steps:
       - env:
