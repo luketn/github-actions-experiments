@@ -1,16 +1,24 @@
 name: Destroy PR Environment
 # Destroys a temporary environment for testing a version of the code when a pull request is closed or unlabeled, if the label 'deploy' was set.
 
+concurrency: deploy
+
 on:
   pull_request:
     types: [ closed, unlabeled ]
     
 jobs:
   deploy-pr:
-#    if: contains(github.event.pull_request.labels.*.name, 'deploy')
+    if: |
+      ${{
+      (github.action == 'unlabeled' && github.event.label.name == 'deploy')
+      || 
+      (github.action == 'closed' && contains(github.event.pull_request.labels.*.name, 'deploy'))
+      }}
+
     runs-on: ubuntu-latest
     steps:
       - env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
         run: echo $EVENT_CONTEXT
-      - run: echo "Deploying!!"
+      - run: echo "Destroying (pull request ${{github.action}})!"
