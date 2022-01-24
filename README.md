@@ -4,7 +4,7 @@ Experiment with workflow actions.
 ## Pull Requests
 There are examples prefixed pr- for pull requests. 
 
-See some example GitHub event JSON structures in the files on the root named:
+See some example GitHub event JSON structures in the files on the root named:  
 ` github-pr-event-{event}.json `
 
 Nice reference to the actions:  
