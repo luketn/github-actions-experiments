@@ -17,4 +17,4 @@ jobs:
       - env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
         run: echo $EVENT_CONTEXT
-      - run: echo "Destroying (pull request ${{github.event.action}})!"
+      - run: echo "Destroying environment for branch '${{ github.event.pull_request.head.ref }}' (pull request ${{github.event.action}})!"
