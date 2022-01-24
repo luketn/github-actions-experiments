@@ -3,11 +3,11 @@ name: Deploy PR Environment
 
 on:
   pull_request:
-    types: [ opened, reopened, edited, synchronize, labeled ]
+    types: [ closed, unlabeled ]
     
 jobs:
   deploy-pr:
-    if: contains(github.event.pull_request.labels.*.name, 'deploy')
+#    if: contains(github.event.pull_request.labels.*.name, 'deploy')
     runs-on: ubuntu-latest
     steps:
       - env:
