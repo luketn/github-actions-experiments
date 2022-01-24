@@ -14,5 +14,5 @@ jobs:
       - env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
         run: echo $EVENT_CONTEXT
-      - run: echo "Deploying branch '${{ github.event.pull_request.head.ref }}' (pull request ${{ github.event.action }})!"
+      - run: echo "Deploying environment for branch '${{ github.event.pull_request.head.ref }}' (pull request ${{ github.event.action }})!"
 
