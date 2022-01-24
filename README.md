@@ -1,4 +1,4 @@
 # github-actions-experiments
 Experiment with workflow actions.
 
-This change should not trigger an action.
+This change should trigger an action.
