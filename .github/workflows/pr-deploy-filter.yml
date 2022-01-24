@@ -1,7 +1,8 @@
 name: Deploy an environment when a pull request is opened or 
 on:
   pull_request:
-    types: [ opened, reopened, edited, synchronize ]
+    types: [ opened, reopened, edited, synchronize, labeled, unlabeled ]
+
     
 jobs:
   package-deploy:
