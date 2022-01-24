@@ -8,7 +8,7 @@ on:
     types: [ opened, reopened, edited, synchronize, labeled ]
     
 jobs:
-  deploy-pr:
+  deploy-pr-environment:
     if: contains(github.event.pull_request.labels.*.name, 'deploy')
     runs-on: ubuntu-latest
     steps:
