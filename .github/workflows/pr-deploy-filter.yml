@@ -1,12 +1,13 @@
 name: Deploy PR Environment
-# Deploys a temporary environment for testing a version of the code when a pull request is opened or updated, if the label 'deploy' is set.
+# Deploys a temporary environment for testing a version of the code when a pull request is created / updated with a 'deploy' label
 
 concurrency: deploy
 
+# When a 'deploy' label is applied to a PR, or code is subsequently synchronised to the branch of the PR
 on:
   pull_request:
-    types: [ opened, reopened, edited, synchronize, labeled ]
-    
+    types: [ labeled, synchronize ]
+
 jobs:
   deploy-pr-environment:
     if: contains(github.event.pull_request.labels.*.name, 'deploy')
