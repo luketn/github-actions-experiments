@@ -14,5 +14,14 @@ jobs:
       - env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
         run: echo $EVENT_CONTEXT
-      - run: echo "Deploying environment for branch '${{ github.event.pull_request.head.ref }}' (pull request ${{ github.event.action }})!"
-
+      - name: Set pull request environment based on label deploy
+        run: |
+          echo "PR_DEPLOY_ENVIRONMENT=dev" >> $GITHUB_ENV
+        if: contains(github.event.pull_request.labels.*.name, 'deploy')
+      - name: Set pull request environment based on label deploy-to-production
+        run: |
+          echo "PR_DEPLOY_ENVIRONMENT=prod" >> $GITHUB_ENV
+        if: contains(github.event.pull_request.labels.*.name, 'deploy-to-production')
+      - run: |
+          echo "Deploying environment for branch '${{ github.event.pull_request.head.ref }}' (pull request ${{ github.event.action }}) to environment ${PR_DEPLOY_ENVIRONMENT}!"
+          echo "Contains output: ${{ contains(github.event.pull_request.labels.*.name, 'deploy-to-production') }}"
