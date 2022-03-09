@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy-pr-environment:
-    if: contains(github.event.pull_request.labels.*.name, 'deploy')
+    if: contains(github.event.pull_request.labels.*.name, 'deploy') || contains(github.event.pull_request.labels.*.name, 'deploy-to-production')
     runs-on: ubuntu-latest
     steps:
       - env:
