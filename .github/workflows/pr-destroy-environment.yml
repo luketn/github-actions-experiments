@@ -8,13 +8,13 @@ on:
     
 jobs:
   destroy-pr-environment:
-    if: |
-      (github.event.action == 'unlabeled' && github.event.label.name == 'deploy') 
-      || 
-      (github.event.action == 'closed' && contains(github.event.pull_request.labels.*.name, 'deploy'))
+#    if: |
+#      (github.event.action == 'unlabeled' && github.event.label.name == 'deploy')
+#      ||
+#      (github.event.action == 'closed' && contains(github.event.pull_request.labels.*.name, 'deploy'))
     runs-on: ubuntu-latest
     steps:
       - env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
         run: echo $EVENT_CONTEXT
-      - run: echo "Destroying environment for branch '${{ github.event.pull_request.head.ref }}' (pull request ${{github.event.action}})!"
+      - run: echo "Destroying environment for branch '${{ github.event.pull_request.head.ref }}' with labels '${{ join(github.event.pull_request.labels.*.name) }}' (pull request ${{github.event.action}})!"
