@@ -44,6 +44,6 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `Deployed the following URLs\n ${github.env.DEV_URL}${github.env.PROD_URL}\n`
+              body: `Deployed the following URLs\n ${process.env.DEV_URL}${process.env.PROD_URL}\n`
             })
             
