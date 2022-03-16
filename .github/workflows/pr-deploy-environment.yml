@@ -40,8 +40,8 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const devUrl = `${process.env.DEV_URL}`
-            const prodUrl = `${process.env.PROD_URL}`
+            const devUrl = process.env.DEV_URL
+            const prodUrl = process.env.PROD_URL
             if (devUrl || prodUrl) {
               let body = `Deployed the following pull request environments:`
               if (devUrl) {
