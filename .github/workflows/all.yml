@@ -15,3 +15,4 @@ jobs:
           script: |
             const branchName = context.ref.substring('refs/heads/'.length);
             console.log('branchName', branchName);
+            console.log(JSON.stringify(context, null, 2));
